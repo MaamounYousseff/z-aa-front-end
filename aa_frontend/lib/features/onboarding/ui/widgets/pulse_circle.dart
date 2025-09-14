@@ -21,6 +21,23 @@ class _PulseCircleState extends State<PulseCircle>
   late final Animation<double> _scaleAnimation;
   late final Animation<double> _opacityAnimation;
 
+  @Answer(
+    "because the animations should be restart when the isOn value changes. without it it will just do one animation for the first time then  it will not do any animation.",
+  )
+  @override
+  void didUpdateWidget(covariant PulseCircle oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.isOn != widget.isOn) {
+      if (widget.isOn) {
+        _controller.repeat(reverse: true);
+      } else {
+        _controller.stop();
+        _controller.reset(); // reset back to original state
+      }
+    }
+  }
+
   @override
   void initState() {
     super.initState();

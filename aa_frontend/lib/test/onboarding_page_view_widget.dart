@@ -27,7 +27,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       body: PageView(
         controller: _controller,
         onPageChanged: (index) {
-          print("this method is called ");
           setState(() => _currentPage = index); // trigger rebuild
         },
         children: const [
