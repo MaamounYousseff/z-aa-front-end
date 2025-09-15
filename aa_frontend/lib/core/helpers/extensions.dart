@@ -29,3 +29,12 @@ extension Navigation on BuildContext {
 extension OpacityExt on Widget {
   Widget withOpacity(double opacity) => Opacity(opacity: opacity, child: this);
 }
+
+extension TranslateExt on Widget {
+  Widget withTranslate(Offset offset) =>
+      Transform.translate(offset: offset, child: this);
+}
+
+extension ScaleExt on Widget {
+  Widget withScale(double scale) => Transform.scale(scale: scale, child: this);
+}

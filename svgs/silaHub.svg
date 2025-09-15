@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="400" height="400">
+  <!-- Gradient for the stroke -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1EA7F6"/>
+      <stop offset="100%" stop-color="#3FE7E7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Clear S shape -->
+  <path
+    d="M150 50
+       C 100 20, 60 40, 60 80
+       C 60 120, 140 100, 140 150
+       C 140 190, 60 180, 60 150"
+    fill="none"
+    stroke="url(#grad)"
+    stroke-width="16"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+
+  <!-- Colored nodes along the S -->
+  <circle cx="150" cy="50" r="8" fill="#FFD166"/> <!-- top (company) -->
+  <circle cx="100" cy="100" r="8" fill="#FF4F8A"/> <!-- middle (advertiser) -->
+  <circle cx="60"  cy="150" r="8" fill="#3FE7E7"/> <!-- bottom (normal user) -->
+</svg>

@@ -6,7 +6,8 @@ class PulseCircle extends StatefulWidget {
   final bool isOn;
   final AnimationController controller;
 
-  const PulseCircle({
+  // ignore: prefer_const_constructors_in_immutables
+  PulseCircle({
     super.key,
     required this.size,
     required this.isOn,
@@ -38,19 +39,18 @@ class _PulseCircleState extends State<PulseCircle> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    if (!widget.isOn) {
-      return Container(
-        width: widget.size,
-        height: widget.size,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.grey,
-        ),
-      );
-    }
+  Widget circleOff() {
+    return Container(
+      width: widget.size,
+      height: widget.size,
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.grey,
+      ),
+    );
+  }
 
+  Widget circleOn() {
     return AnimatedBuilder(
       animation: widget.controller,
       builder: (context, child) {
@@ -60,36 +60,35 @@ class _PulseCircleState extends State<PulseCircle> {
         return Stack(
           alignment: Alignment.center,
           children: [
-            Transform.scale(
-              scale: scale,
-              child: Container(
-                width: widget.size,
-                height: widget.size,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                    colors: [Colors.green, Colors.blue],
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                  ),
-                ),
-              ).withOpacity(opacity),
-            ),
-            Container(
-              width: widget.size,
-              height: widget.size,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                  colors: [Colors.green, Colors.blue],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                ),
-              ),
-            ),
+            filledCircleWidget().withScale(scale).withOpacity(opacity),
+            filledCircleWidget(),
           ],
         );
       },
     );
+  }
+
+  Widget filledCircleWidget() {
+    return Container(
+      width: widget.size,
+      height: widget.size,
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: LinearGradient(
+          colors: [Color(0xFF26A69A), Color(0xFF38BDF8)],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!widget.isOn) {
+      return circleOff();
+    }
+
+    return circleOn();
   }
 }
