@@ -38,3 +38,8 @@ extension TranslateExt on Widget {
 extension ScaleExt on Widget {
   Widget withScale(double scale) => Transform.scale(scale: scale, child: this);
 }
+
+extension RotateExt on Widget {
+  Widget withRotate(double angle) =>
+      Transform.rotate(angle: angle, child: this);
+}

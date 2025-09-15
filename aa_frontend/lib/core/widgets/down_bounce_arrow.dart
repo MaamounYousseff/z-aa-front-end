@@ -25,14 +25,14 @@ class _DownBouncingFleshState extends State<DownBouncingFlesh> {
   void initState() {
     super.initState();
 
-    _bounceAnimation = Tween<double>(begin: -2, end: 5).animate(
+    _bounceAnimation = Tween<double>(begin: -1, end: 0).animate(
       CurvedAnimation(
         parent: widget.animationController,
         curve: Curves.easeInOut,
       ),
     );
 
-    _opacityAnimation = Tween<double>(begin: 0.3, end: 0.5).animate(
+    _opacityAnimation = Tween<double>(begin: 0.2, end: 0.5).animate(
       CurvedAnimation(
         parent: widget.animationController,
         curve: Curves.easeInOut,

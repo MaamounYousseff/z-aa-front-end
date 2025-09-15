@@ -1,7 +1,12 @@
+import 'package:aa_frontend/core/theming/Colors.dart';
 import 'package:aa_frontend/core/theming/styles.dart';
 import 'package:aa_frontend/extra/annotations/annotation_info.dart';
-import 'package:aa_frontend/features/down_bounce_arrow.dart';
+import 'package:aa_frontend/core/widgets/advertiser_shape_bounce.dart';
+import 'package:aa_frontend/core/widgets/company_shape_bounce.dart';
+import 'package:aa_frontend/core/widgets/down_bounce_arrow.dart';
 import 'package:aa_frontend/features/onboarding/ui/widgets/on_boarding_logo_and_name.dart';
+import 'package:aa_frontend/core/widgets/user_shape_bounce.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,21 +28,55 @@ class _OnBoardingPageOneState extends State<OnBoardingPageOne> {
     return Column(
       children: [
         const SilaLogoAndName(),
-        SizedBox(height: 20.h),
+        SizedBox(height: 15.h),
         DownBouncingFlesh(
           animationController: widget.animationController,
-          size: 20.h,
-        ),
-        SizedBox(height: 20.h),
-        Text(
-          "Connect, Discover & Share",
-          style: TextStyles.font24Black700Weight,
+          size: 15.h,
         ),
         SizedBox(height: 10.h),
         Text(
+          "Connect, Discover & Share",
+          style: TextStyles.font23Black600Weight,
+        ),
+        SizedBox(height: 6.h),
+        Text(
           "Join a vibrant community where you explore amazing content, connect with creators, and discover products across all your favorite categories.",
           textAlign: TextAlign.center,
-          style: TextStyles.font16GreyDark400Weight,
+          style: TextStyles.font14_5GreyDark400Weight,
+        ),
+        SizedBox(height: 30.h),
+        Container(
+          width: double.infinity,
+          height: 100.h,
+          margin: EdgeInsets.symmetric(horizontal: 70.w),
+          child: Stack(
+            children: [
+              // Top-left
+              Align(
+                alignment: Alignment.topLeft,
+                child: CompanyShapeBounce(
+                  animationController: widget.animationController,
+                  size: 35.r,
+                ),
+              ),
+              // Center
+              Align(
+                alignment: Alignment.center,
+                child: AdvertiserShapeBounce(
+                  animationController: widget.animationController,
+                  size: 25.r,
+                ),
+              ),
+              // Bottom-right
+              Align(
+                alignment: Alignment.bottomRight,
+                child: UserShapeBounce(
+                  animationController: widget.animationController,
+                  size: 18.r,
+                ),
+              ),
+            ],
+          ),
         ),
         //  SizedBox(height: 20),
         // AnimationShapes(),
