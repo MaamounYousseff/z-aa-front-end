@@ -1,124 +1,100 @@
 import 'package:aa_frontend/core/helpers/extensions.dart';
-import 'package:aa_frontend/extra/annotations/annotation_info.dart';
 import 'package:flutter/material.dart';
 
 class PulseCircle extends StatefulWidget {
   final double size;
   final bool isOn;
-  const PulseCircle({super.key, required this.size, required this.isOn});
+  final AnimationController controller;
+
+  const PulseCircle({
+    super.key,
+    required this.size,
+    required this.isOn,
+    required this.controller,
+  });
 
   @override
-  State<StatefulWidget> createState() => _PulseCircleState();
+  State<PulseCircle> createState() => _PulseCircleState();
 }
 
-@NotUnderstand("what is the late here.")
-@Answer(
-  "late is used to declare a non-nullable variable that will be initialized later in the run time.",
-)
-class _PulseCircleState extends State<PulseCircle>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-  late final Animation<double> _scaleAnimation;
-  late final Animation<double> _opacityAnimation;
-
-  @Answer(
-    "because the animations should be restart when the isOn value changes. without it it will just do one animation for the first time then  it will not do any animation.",
-  )
-  @override
-  void didUpdateWidget(covariant PulseCircle oldWidget) {
-    super.didUpdateWidget(oldWidget);
-
-    if (oldWidget.isOn != widget.isOn) {
-      if (widget.isOn) {
-        _controller.repeat(reverse: true);
-      } else {
-        _controller.stop();
-        _controller.reset(); // reset back to original state
-      }
-    }
-  }
+class _PulseCircleState extends State<PulseCircle> {
+  late Animation<double> _scaleAnimation;
+  late Animation<double> _opacityAnimation;
 
   @override
   void initState() {
     super.initState();
+    init();
+  }
 
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
+  void init() {
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.6).animate(
+      CurvedAnimation(parent: widget.controller, curve: Curves.easeOut),
     );
 
-    _scaleAnimation = Tween<double>(
-      begin: 1.0,
-      end: 1.6,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
-
-    _opacityAnimation = Tween<double>(
-      begin: 1.0,
-      end: 0.0,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
-
-    // start animation only if isOn = true
-    if (widget.isOn) {
-      _controller.repeat(reverse: true);
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  Widget _buildCircleOff({required double size}) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+    _opacityAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(
+      CurvedAnimation(parent: widget.controller, curve: Curves.easeOut),
     );
   }
 
-  Widget _buildCircleOn({required double size, required double opacity}) {
+  Widget _buildCircleOff() {
     return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
+      width: widget.size,
+      height: widget.size,
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
-        gradient: const LinearGradient(
-          colors: [Colors.green, Colors.blue],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
+        color: Colors.grey,
       ),
-    ).withOpacity(opacity);
+    );
+  }
+
+  Widget _buildCircleOn({required double scale, required double opacity}) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Transform.scale(
+          scale: scale,
+          child: Container(
+            width: widget.size,
+            height: widget.size,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: [Colors.green, Colors.blue],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+              ),
+            ),
+          ).withOpacity(opacity),
+        ),
+        Container(
+          width: widget.size,
+          height: widget.size,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              colors: [Colors.green, Colors.blue],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   @override
-  @NotUnderstand("Stack and Transform")
-  @Answer(
-    "Why we use Stack? To create multiple circle over each other. so we can get the pulse effect. (as we can see also  we change the circle opacity at each Transform.scale call)",
-  )
-  @Answer("Transform.scale → makes the widget grow/shrink from its center.")
   Widget build(BuildContext context) {
-    if (widget.isOn == false) {
-      return _buildCircleOff(size: widget.size);
+    if (!widget.isOn) {
+      return _buildCircleOff();
     }
+
     return AnimatedBuilder(
-      animation: _controller,
+      animation: widget.controller,
       builder: (context, child) {
-        final scale = _scaleAnimation.value;
-        final opacity = _opacityAnimation.value;
-        return Stack(
-          alignment: Alignment.center,
-          children: [
-            Transform.scale(
-              scale: scale,
-              child: _buildCircleOn(size: widget.size, opacity: opacity),
-            ),
-            _buildCircleOn(
-              size: widget.size,
-              opacity: 1.0,
-            ), //this is the main circle.
-          ],
+        return _buildCircleOn(
+          scale: _scaleAnimation.value,
+          opacity: _opacityAnimation.value,
         );
       },
     );
