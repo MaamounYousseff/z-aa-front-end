@@ -7,7 +7,7 @@ class OnBoardingPageTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("On Boarding Page Two"),
+        const Text("On Boarding Page Two"),
         // Add your widgets for page two here
       ],
     );

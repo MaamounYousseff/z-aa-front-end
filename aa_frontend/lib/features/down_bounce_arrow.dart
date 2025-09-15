@@ -25,14 +25,14 @@ class _DownBouncingFleshState extends State<DownBouncingFlesh> {
   void initState() {
     super.initState();
 
-    _bounceAnimation = Tween<double>(begin: 0, end: 5).animate(
+    _bounceAnimation = Tween<double>(begin: -2, end: 5).animate(
       CurvedAnimation(
         parent: widget.animationController,
         curve: Curves.easeInOut,
       ),
     );
 
-    _opacityAnimation = Tween<double>(begin: 0.3, end: 0.8).animate(
+    _opacityAnimation = Tween<double>(begin: 0.3, end: 0.5).animate(
       CurvedAnimation(
         parent: widget.animationController,
         curve: Curves.easeInOut,
@@ -58,7 +58,10 @@ class _DownBouncingFleshState extends State<DownBouncingFlesh> {
         "assets/svgs/arrow_down.svg",
         width: widget.size,
         height: widget.size,
-        colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+        colorFilter: ColorFilter.mode(
+          const Color.fromARGB(255, 3, 3, 3),
+          BlendMode.srcIn,
+        ),
       ),
     );
   }

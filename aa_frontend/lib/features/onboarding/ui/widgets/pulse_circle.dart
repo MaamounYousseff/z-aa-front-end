@@ -7,7 +7,7 @@ class PulseCircle extends StatefulWidget {
   final AnimationController controller;
 
   // ignore: prefer_const_constructors_in_immutables
-  PulseCircle({
+  const PulseCircle({
     super.key,
     required this.size,
     required this.isOn,

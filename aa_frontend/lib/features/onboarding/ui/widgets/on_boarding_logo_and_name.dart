@@ -1,5 +1,7 @@
+import 'package:aa_frontend/core/theming/styles.dart';
 import 'package:aa_frontend/features/silahub_logo.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SilaLogoAndName extends StatefulWidget {
   const SilaLogoAndName({super.key});
@@ -13,21 +15,11 @@ class _SilaLogoAndNameState extends State<SilaLogoAndName> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SilaHubLogo(size: 115),
-        const SizedBox(height: 8),
-        const Text(
-          "SILAhub",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-        const SizedBox(height: 0),
-        const Text(
-          "social commerce",
-          style: TextStyle(fontSize: 16, color: Colors.grey),
-        ),
+        SilaHubLogo(size: 115.r),
+        SizedBox(height: 8.h),
+        Text("SILAhub", style: TextStyles.font24Black700Weight),
+        SizedBox(height: 0.h),
+        Text("social commerce", style: TextStyles.font16GreyDark400Weight),
       ],
     );
   }
