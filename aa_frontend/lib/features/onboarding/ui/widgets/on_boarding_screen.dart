@@ -35,16 +35,25 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: List.generate(
-            3,
-            (index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: PulseCircle(
-                size: 20,
-                isOn: index == _currentPage,
-                controller: _animationController,
+        automaticallyImplyLeading:
+            false, // optional: remove default back button
+        title: const SizedBox.shrink(), // leave title empty
+        flexibleSpace: Center(
+          child: Container(
+            margin: const EdgeInsets.only(top: 20),
+            // the group container wraps exactly the 3 pulses
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: List.generate(
+                3,
+                (index) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: PulseCircle(
+                    size: 20,
+                    isOn: index == _currentPage,
+                    controller: _animationController,
+                  ),
+                ),
               ),
             ),
           ),
