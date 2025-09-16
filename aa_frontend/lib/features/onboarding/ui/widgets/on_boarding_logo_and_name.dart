@@ -1,4 +1,3 @@
-import 'package:aa_frontend/core/theming/Colors.dart';
 import 'package:aa_frontend/core/theming/styles.dart';
 import 'package:aa_frontend/core/widgets/silahub_logo.dart';
 import 'package:flutter/material.dart';
@@ -28,9 +27,9 @@ class _SilaLogoAndNameState extends State<SilaLogoAndName> {
           child: Center(child: SilaHubLogo(size: 115.r)),
         ),
         SizedBox(height: 0.h),
-        Text("SILAhub", style: TextStyles.font22Black500Weight),
+        Text("SILAhub", style: TextStyles.font20_5Black500Weight),
         SizedBox(height: 0.h),
-        Text("social commerce", style: TextStyles.font14_5GreyDark400Weight),
+        Text("social commerce", style: TextStyles.font14Dark500Weight),
       ],
     );
   }
