@@ -14,6 +14,12 @@ class TextStyles {
     color: Colors.black,
   );
 
+  static TextStyle font20BlueGray700Weight = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w700,
+    color: Color(0xFF2D3748),
+  );
+
   static TextStyle font19_5Black500Weight = TextStyle(
     fontSize: 19.5.sp,
     fontWeight: FontWeight.w500,

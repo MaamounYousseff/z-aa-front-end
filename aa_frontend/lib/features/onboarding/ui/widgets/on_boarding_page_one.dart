@@ -1,11 +1,11 @@
 import 'package:aa_frontend/core/theming/Colors.dart';
 import 'package:aa_frontend/core/theming/styles.dart';
 import 'package:aa_frontend/extra/annotations/annotation_info.dart';
-import 'package:aa_frontend/core/widgets/advertiser_shape_bounce.dart';
-import 'package:aa_frontend/core/widgets/company_shape_bounce.dart';
-import 'package:aa_frontend/core/widgets/down_bounce_arrow.dart';
+import 'package:aa_frontend/core/widgets/bounce/advertiser_shape_bounce.dart';
+import 'package:aa_frontend/core/widgets/bounce/company_shape_bounce.dart';
+import 'package:aa_frontend/core/widgets/bounce/down_bounce_arrow.dart';
 import 'package:aa_frontend/features/onboarding/ui/widgets/on_boarding_logo_and_name.dart';
-import 'package:aa_frontend/core/widgets/user_shape_bounce.dart';
+import 'package:aa_frontend/core/widgets/bounce/user_shape_bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
