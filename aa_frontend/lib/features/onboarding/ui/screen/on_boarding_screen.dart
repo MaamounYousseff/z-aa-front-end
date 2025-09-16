@@ -1,3 +1,4 @@
+import 'package:aa_frontend/features/onboarding/ui/widgets/on_boarding_bottom_nav_bar.dart';
 import 'package:aa_frontend/features/onboarding/ui/widgets/on_boarding_page_one.dart';
 import 'package:aa_frontend/features/onboarding/ui/widgets/on_boarding_page_three.dart';
 import 'package:aa_frontend/features/onboarding/ui/widgets/on_boarding_page_two.dart';
@@ -39,6 +40,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 253, 254, 255),
         automaticallyImplyLeading: false, // remove default back button
         title: const SizedBox.shrink(), // leave title empty
         flexibleSpace: SafeArea(
@@ -50,9 +52,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
               children: List.generate(
                 3,
                 (index) => Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 4),
+                  padding: EdgeInsets.symmetric(horizontal: 6.w),
                   child: PulseCircle(
-                    size: 17,
+                    size: 15.r,
                     isOn: index == _currentPage,
                     controller: _animationController,
                   ),
@@ -62,23 +64,51 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
           ),
         ),
       ),
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (index) => setState(() => _currentPage = index),
-        children: [
-          paddedPage(
-            OnBoardingPageOne(animationController: _animationController),
+      body: Container(
+        color: Color.fromARGB(255, 253, 254, 255),
+        child: PageView(
+          controller: _pageController,
+          onPageChanged: (index) => setState(() => _currentPage = index),
+          children: [
+            paddedPage(
+              OnBoardingPageOne(animationController: _animationController),
+            ),
+            paddedPage(OnBoardingPageTwo()),
+            paddedPage(OnBoardingPageThree()),
+          ],
+        ),
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          color: const Color.fromARGB(255, 253, 254, 255),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: OnBoardingBottomNavBar(
+            pageIndex: _currentPage,
+            backAction: () {
+              _pageController.previousPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            },
+            nextAction: () {
+              _pageController.nextPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            },
+            getStartedAction: () {
+              // Define what should happen when "Get Started" is pressed
+              print("Get Started pressed");
+            },
           ),
-          paddedPage(OnBoardingPageTwo()),
-          paddedPage(OnBoardingPageThree()),
-        ],
+        ),
       ),
     );
   }
 
   Widget paddedPage(Widget child) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 22.w, vertical: 40.h),
+      padding: EdgeInsets.symmetric(horizontal: 22.w),
       child: child,
     );
   }

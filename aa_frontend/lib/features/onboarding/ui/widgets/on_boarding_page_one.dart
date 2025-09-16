@@ -25,63 +25,66 @@ class OnBoardingPageOne extends StatefulWidget {
 class _OnBoardingPageOneState extends State<OnBoardingPageOne> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SilaLogoAndName(),
-        SizedBox(height: 15.h),
-        DownBouncingFlesh(
-          animationController: widget.animationController,
-          size: 15.h,
-        ),
-        SizedBox(height: 10.h),
-        Text(
-          "Connect, Discover & Share",
-          style: TextStyles.font23Black600Weight,
-        ),
-        SizedBox(height: 6.h),
-        Text(
-          "Join a vibrant community where you explore amazing content, connect with creators, and discover products across all your favorite categories.",
-          textAlign: TextAlign.center,
-          style: TextStyles.font14_5GreyDark400Weight,
-        ),
-        SizedBox(height: 30.h),
-        Container(
-          width: double.infinity,
-          height: 100.h,
-          margin: EdgeInsets.symmetric(horizontal: 70.w),
-          child: Stack(
-            children: [
-              // Top-left
-              Align(
-                alignment: Alignment.topLeft,
-                child: CompanyShapeBounce(
-                  animationController: widget.animationController,
-                  size: 35.r,
-                ),
-              ),
-              // Center
-              Align(
-                alignment: Alignment.center,
-                child: AdvertiserShapeBounce(
-                  animationController: widget.animationController,
-                  size: 25.r,
-                ),
-              ),
-              // Bottom-right
-              Align(
-                alignment: Alignment.bottomRight,
-                child: UserShapeBounce(
-                  animationController: widget.animationController,
-                  size: 18.r,
-                ),
-              ),
-            ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 25.h),
+          const SilaLogoAndName(),
+          SizedBox(height: 20.h),
+          DownBouncingFlesh(
+            animationController: widget.animationController,
+            size: 15.h,
           ),
-        ),
-        //  SizedBox(height: 20),
-        // AnimationShapes(),
-        // ExploreConnectShareBar(),
-      ],
+          SizedBox(height: 10.h),
+          Text(
+            "Connect, Discover & Share",
+            style: TextStyles.font23Black600Weight,
+          ),
+          SizedBox(height: 6.h),
+          Text(
+            "Join a vibrant community where you explore amazing content, connect with creators, and discover products across all your favorite categories.",
+            textAlign: TextAlign.center,
+            style: TextStyles.font14_5GreyDark400Weight,
+          ),
+          SizedBox(height: 45.h),
+          Container(
+            width: double.infinity,
+            height: 100.h,
+            margin: EdgeInsets.symmetric(horizontal: 70.w),
+            child: Stack(
+              children: [
+                // Top-left
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: CompanyShapeBounce(
+                    animationController: widget.animationController,
+                    size: 35.r,
+                  ),
+                ),
+                // Center
+                Align(
+                  alignment: Alignment.center,
+                  child: AdvertiserShapeBounce(
+                    animationController: widget.animationController,
+                    size: 25.r,
+                  ),
+                ),
+                // Bottom-right
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: UserShapeBounce(
+                    animationController: widget.animationController,
+                    size: 18.r,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          //  SizedBox(height: 20),
+          // AnimationShapes(),
+          // ExploreConnectShareBar(),
+        ],
+      ),
       //create 2 child :
       //1st child contain the image logo , SILAhub social commerce , flesh
       //2nd child contain the text Connect ...

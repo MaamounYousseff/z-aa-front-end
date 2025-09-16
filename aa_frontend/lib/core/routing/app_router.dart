@@ -1,5 +1,5 @@
-import 'package:aa_frontend/features/login/ui/widgets/login_screen.dart';
-import 'package:aa_frontend/features/onboarding/ui/widgets/on_boarding_screen.dart';
+import 'package:aa_frontend/features/login/ui/screen/login_screen.dart';
+import 'package:aa_frontend/features/onboarding/ui/screen/on_boarding_screen.dart';
 import 'package:aa_frontend/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 
