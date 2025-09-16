@@ -1,5 +1,5 @@
 import 'package:aa_frontend/core/theming/styles.dart';
-import 'package:aa_frontend/core/widgets/silahub_logo.dart';
+import 'package:aa_frontend/core/widgets/logo/silahub_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
