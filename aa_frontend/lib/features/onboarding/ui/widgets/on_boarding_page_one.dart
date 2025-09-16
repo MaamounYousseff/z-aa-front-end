@@ -38,13 +38,13 @@ class _OnBoardingPageOneState extends State<OnBoardingPageOne> {
           SizedBox(height: 10.h),
           Text(
             "Connect, Discover & Share",
-            style: TextStyles.font23Black600Weight,
+            style: TextStyles.font21_5Black600Weight,
           ),
           SizedBox(height: 6.h),
           Text(
             "Join a vibrant community where you explore amazing content, connect with creators, and discover products across all your favorite categories.",
             textAlign: TextAlign.center,
-            style: TextStyles.font14_5GreyDark400Weight,
+            style: TextStyles.font14Dark500Weight,
           ),
           SizedBox(height: 45.h),
           Container(
