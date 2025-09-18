@@ -1,6 +1,8 @@
 import 'package:aa_frontend/core/theming/styles.dart';
+import 'package:aa_frontend/extra/annotations/annotation_info.dart';
 import 'package:flutter/material.dart';
 
+@NotCompleted("all the value must be dynamic")
 class CardContainer extends StatelessWidget {
   final Color primaryColor;
   final String title;
