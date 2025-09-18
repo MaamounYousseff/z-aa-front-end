@@ -28,7 +28,7 @@ class _OnBoardingPageOneState extends State<OnBoardingPageOne> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 25.h),
+          SizedBox(height: 15.h),
           const SilaLogoAndName(),
           SizedBox(height: 20.h),
           DownBouncingFlesh(

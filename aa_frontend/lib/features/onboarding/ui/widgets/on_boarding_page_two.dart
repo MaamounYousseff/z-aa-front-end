@@ -13,9 +13,9 @@ class OnBoardingPageTwo extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 25.h),
-          SilaHubLogo(size: 140.r),
-          SizedBox(height: 30.h),
+          SizedBox(height: 20.h),
+          SilaHubLogo(size: 120.r),
+          SizedBox(height: 20.h),
           Text(
             "Three Ways to Experience",
             style: TextStyles.font21Black500Weight,

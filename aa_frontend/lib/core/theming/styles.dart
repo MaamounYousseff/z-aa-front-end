@@ -61,4 +61,10 @@ class TextStyles {
     fontWeight: FontWeight.w300,
     color: Color.fromARGB(255, 108, 108, 108),
   );
+
+  static TextStyle font20w800Gray700Weight = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    color: const Color(0xFF2D3748),
+  );
 }
