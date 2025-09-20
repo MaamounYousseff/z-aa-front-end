@@ -92,59 +92,61 @@ class _OnBoardingPageThreeState extends State<OnBoardingPageThree>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 15.h),
-        SilaHubLogo(size: 120.r),
-        SizedBox(height: 20.h),
-        Text(
-          "Choose You're Journey in ",
-          style: TextStyles.font21Black500Weight,
-        ),
-        Text("SILAhub", style: TextStyles.font21_5Black600Weight),
-        SizedBox(height: 6.h),
-        // User button
-        TextButton(
-          onPressed: _userButtonOnPressed,
-          style: TextButton.styleFrom(
-            padding: EdgeInsets.zero,
-            minimumSize: Size.zero,
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 15.h),
+          SilaHubLogo(size: 120.r),
+          SizedBox(height: 20.h),
+          Text(
+            "Choose You're Journey in ",
+            style: TextStyles.font21Black500Weight,
           ),
-          child: OnBoardingAnimatedCard(
-            userType: UserType.normalUser,
-            animationController: _userAnimationController,
+          Text("SILAhub", style: TextStyles.font21_5Black600Weight),
+          SizedBox(height: 6.h),
+          // User button
+          TextButton(
+            onPressed: _userButtonOnPressed,
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+              minimumSize: Size.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            child: OnBoardingAnimatedCard(
+              userType: UserType.normalUser,
+              animationController: _userAnimationController,
+            ),
           ),
-        ),
 
-        // Company button
-        TextButton(
-          onPressed: _companyButtonOnPressed,
-          style: TextButton.styleFrom(
-            padding: EdgeInsets.zero,
-            minimumSize: Size.zero,
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          // Company button
+          TextButton(
+            onPressed: _companyButtonOnPressed,
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+              minimumSize: Size.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            child: OnBoardingAnimatedCard(
+              userType: UserType.company,
+              animationController: _companyAnimationController,
+            ),
           ),
-          child: OnBoardingAnimatedCard(
-            userType: UserType.company,
-            animationController: _companyAnimationController,
-          ),
-        ),
 
-        // Advertiser button
-        TextButton(
-          onPressed: _advertiserButtonOnPressed,
-          style: TextButton.styleFrom(
-            padding: EdgeInsets.zero,
-            minimumSize: Size.zero,
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          // Advertiser button
+          TextButton(
+            onPressed: _advertiserButtonOnPressed,
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+              minimumSize: Size.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            child: OnBoardingAnimatedCard(
+              userType: UserType.advertiser,
+              animationController: _advertiserAnimationController,
+            ),
           ),
-          child: OnBoardingAnimatedCard(
-            userType: UserType.advertiser,
-            animationController: _advertiserAnimationController,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
